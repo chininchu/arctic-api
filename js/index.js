@@ -11,7 +11,7 @@ const thisYear = today.getFullYear()
 
 const footer = document.querySelector("footer")
 
-const copyright = document.createElement("footer")
+const copyright = document.createElement("p")
 copyright.textContent = `\u00A9 Maria Fernanda Arredondo Garcia ${thisYear}`
 footer.appendChild(copyright)
 
@@ -29,10 +29,6 @@ const skills = [
   "HTML",
 ]
 const skillsSection = document.querySelector("#Skills")
-
-// adds ul so skillsList has something to select
-const ul = document.createElement("ul")
-skillsSection.appendChild(ul)
 
 const skillsList = skillsSection.querySelector("ul")
 
