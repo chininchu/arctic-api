@@ -1,0 +1,348 @@
+/* =====================
+  General Styling
+  ====================== */
+body {
+  background-color: #00b7cf;
+  color: #1d2a62;
+  font-family: "Roboto-Serif", serif;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+p {
+  font-size: 18px;
+}
+
+/* =====================
+  Navigation Menu
+  ====================== */
+nav {
+  background-color: #ededed;
+  border-radius: 100px;
+  font-family: "Roboto", serif;
+  box-shadow: 0 8px 20px rgba(12, 123, 163, 0.459);
+
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  top: 5px;
+  position: sticky;
+  z-index: 100;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  width: auto;
+  max-width: 100%;
+  margin: 5px auto;
+  overflow: hidden;
+}
+
+nav a {
+  color: #00b7cf;
+  text-decoration: none;
+  padding: 20px;
+}
+
+nav a:hover {
+  color: #1d2a62;
+  font-size: 11px;
+}
+
+/* =====================
+  Title/Header
+  ====================== */
+header {
+  background-color: #00b7cf;
+  overflow: hidden;
+  color: #ededed;
+  text-align: center;
+  margin: 0 auto;
+  padding: 200px;
+  line-height: 0.8;
+}
+
+header h1 {
+  font-family: "Darumadrop One", sans;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 90px;
+  margin-top: 0;
+}
+
+header p {
+  letter-spacing: 2px;
+  padding: 0 30px;
+  margin-top: 0;
+}
+
+header em {
+  color: #fed85d;
+  font-size: larger;
+}
+
+/* =====================
+  Headings
+  ====================== */
+h2 {
+  width: 40%;
+  margin-right: auto;
+  font-size: 40px;
+  font-family: "Roboto", sans;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+h3 {
+  font-size: 26px;
+}
+
+/*  =====================
+  About
+  ====================== */
+#About {
+  background-color: #ededed;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 90px;
+  margin-bottom: -20px;
+  overflow: hidden;
+}
+
+#About h2 {
+  color: #1d2a62;
+  text-align: left;
+  padding: 0 30px;
+}
+
+#About h3 {
+  text-align: left;
+  font-style: italic;
+  text-transform: uppercase;
+  color: #6daf5f;
+  padding: 0 30px;
+}
+
+.profile-pic {
+  width: 600px;
+  height: 600px;
+  /*object-fit: cover;
+  padding: 10px 0;*/
+  flex: 1;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+#About p {
+  font-size: 20px;
+  padding: 10px;
+}
+
+#About em {
+  color: #6daf5f;
+}
+
+.about-column {
+  color: #239dca;
+
+  text-align: left;
+  padding: 50px;
+  flex: 1;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.quote-container {
+  background-color: #6daf5f;
+  margin: 20px auto;
+  padding: 30px;
+  position: relative;
+  z-index: 99;
+}
+
+.quote {
+  font-size: 20px;
+  color: #ededed;
+  position: relative;
+  align-items: center;
+  font-family: "Roboto-Serif", sans;
+  font-style: italic;
+  margin: 655px 0 0 655px;
+}
+
+.art1 {
+  width: 300px;
+  height: 300px;
+  max-width: 300px;
+  padding: 0;
+  position: relative;
+  left: -100px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/*  =====================
+  Experience
+  ====================== */
+#Experience {
+  margin-top: -33px;
+  background: linear-gradient(#ededed 40%, #00b7cf 60%);
+  padding: 40px 0;
+}
+
+#Experience h2 {
+  margin-bottom: 30px;
+}
+
+#Experience ul {
+  list-style: none;
+  padding: 0;
+}
+
+#Experience li {
+  text-align: center;
+  padding: 25px;
+  margin: 15px 0;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.exp-columns {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 40px;
+}
+
+/*  =====================
+  Education Rows
+  ====================== */
+
+.education {
+  flex: 1;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ed-column {
+  color: #1d2a62;
+}
+
+.ed-list li {
+  background-color: #ededed;
+}
+
+/*  =====================
+  Work Rows
+  ====================== */
+.work {
+  flex: 1;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.work-column {
+  color: #1d2a62;
+}
+
+.work-list li {
+  background-color: #ededed;
+}
+
+/*  =====================
+  Skills
+  ====================== */
+
+#Skills {
+  background-color: #ededed;
+  padding: 40px 0;
+
+}
+#Skills h2 {
+  margin: 0 30%;
+  margin-bottom: 30px;
+}
+#Skills ul {
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  overflow: hidden;
+}
+
+#Skills li {
+  border-radius: 10px;
+  background-color: #00b7cf;
+  list-style: none;
+  padding: 10px 20px;
+}
+/*  =====================
+  Projects
+  ====================== */
+
+#Projects {
+  background-color: #ededed;
+}
+
+/*  =====================
+  Connect
+  ====================== */
+#Connect {
+  background-color: #1d2a62;
+  justify-content: center;
+}
+
+#Connect h2 {
+  color: #ededed;
+  margin: 0 30%;
+}
+
+#Connect a {
+  text-decoration: none;
+}
+
+
+.links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.github {
+   display: inline-block;
+  width: 50px;
+  height: 50px;
+  background-image: url('../images/github.png');
+  background-size: contain;
+  background-repeat: no repeat;
+
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.linkedin {
+   display: inline-block;
+  width: 50px;
+  height: 50px;
+  background-image: url('../images/linkedin.png');
+  background-size: contain;
+  background-repeat: no repeat;
+
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}

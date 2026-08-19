@@ -1,54 +1,163 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="Maria Fernanda Arredondo Garcia"/>
+    <meta name="author" content="Maria Fernanda Arredondo Garcia" />
     <title>Maria Arredondo's Portfolio</title>
+
+    <link rel="stylesheet" href="css/index.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Darumadrop+One&display=swap"
+      rel="stylesheet"
+    />
   </head>
+
   <body>
-    <a href="#About">About</a>
-    <a href="#Experience">Experience</a>
-    <a href="#Connect">Connect</a>
+    <nav>
+      <a href="#About">About</a>
+      <a href="#Experience">Experience</a>
+      <a href="#Skills">Skills</a>
+      <a href="#Projects">Projects</a>
+      <a href="#Connect">Connect</a>
+    </nav>
 
-    <h1>Maria Fernanda Arredondo Garcia</h1>
-
-    <img src ="images/profile-pic.jpeg" alt="a side profile of a woman in a scarf outside in the snow" />
+    <header>
+      <h1>Maria Fernanda <em>Arredondo</em> Garcia</h1>
+      <p>Digital Artist/Illustrator and Beginner Web Developer</p>
+    </header>
 
     <section id="About">
-      <h2>About</h2>
-      <p>
-        I'm a freelance digital artist/illustrator raised in North Carolina,
-        trying to turn my longtime passsion into a career. I'm also a giant
-        lover of creating intriguing and beautiful visuals that narrate a story.
-      </p>
-      <p>
-        That's why, <em>other than art</em>, I also have a strong interest in cinema and
-        animation.
-      </p>
+      
+      <img
+        src="images/profile-pic.jpeg"
+        alt="a side profile of a woman in a scarf outside in the snow" class="profile-pic"
+      />
+ 
+      <div class="about-column">
+       
+        <h2>About</h2>
+        <h3>Hiya!</h3>
+        <p>
+          I'm a freelance digital artist/illustrator raised in North Carolina,
+          trying to turn my longtime passsion into a career. I'm also a giant
+          lover for creating intriguing and beautiful visuals that narrate a
+          story.
+        </p>
+        <p>
+          That's why, <em>other than art</em>, I also have a strong interest in
+          cinema and animation.
+        </p>
+      </div>
+      <img src="images/art1.png" alt="chibi cartoon of a girl" class="art1"/>
     </section>
+
+    <div class="quote-container">
+      <span class="quote"
+        >"I don't know anything with certainty, but seeing the stars makes me
+        dream. − Vincent Van Gogh"
+      </span>
+    </div>
 
     <section id="Experience">
       <h2>Experience</h2>
+      <!-- row 1-->
+      <div class="exp-columns">
+        <div class="education">
+          <div class="ed-column">
+            <h3>Education</h3>
+          </div>
+          <div class="ed-list">
+            <h4><em>2020</em>, Durham Tech Community College</h4>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita
+              mollitia ipsa doloribus, voluptatibus totam fuga. Inventore
+              aliquid quidem necessitatibus corporis ab nesciunt, doloribus
+              sequi modi. Ipsam dolorem enim quam tenetur?
+            </p>
+            <ul>
+              <li>Highschool computer classes for C++, HTML, and CSS</li>
+              <li>Intro to Web Design, HTML and CSS</li>
+              <li>Database Management</li>
+            </ul>
+
+            <h4><em>2021-2025</em>, Eastern Connecticut State University</h4>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita,
+              delectus. Officiis asperiores ipsa eius veniam. Numquam nihil
+              dicta eveniet aliquid, molestiae dolores quasi hic explicabo
+              libero officiis tempora animi distinctio?
+            </p>
+            <ul>
+              <li>
+                Bachelor of Arts in Graphic Design, classes in UI and web design
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- row 2-->
+        <div class="work">
+          <div class="work-column">
+            <h3>Work</h3>
+            <h4><em>2018-Present</em>, Freelance Digital Artist/Illustrator</h4>
+            <p>
+              I have been working as a freelance digital artist/illustrator for
+              several years, creating custom artwork for clients across various
+              platforms. My work includes character design, concept art, and
+              digital illustrations for personal and commercial projects.
+            </p>
+          </div>
+
+          <div class="work-list">
+            <ul>
+              <li>
+                Works extensively with Photoshop, Illustrator, and InDesign
+              </li>
+              <li>Familiar with Maya and Blender</li>
+              <li>Worked with HTML and CSS</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="Skills">
+      <h2>Skills</h2>
+      <!-- List of skills added with DOM -->
+    </section>
+
+    <section id="Projects">
+      <h2>Projects</h2>
       <ul>
-        <li>Highschool computer classes for C++, HTML, and CSS</li>
-        <li>Durham Tech Commnity College: Intro to Web Development</li>
-        <li>Durham Tech Community College: Database Management</li>
-        <li>Bachelor of Arts in Graphic Design</li>
-        <li>Worked extensively with Photoshop, Illustrator, and InDesign</li>
-        <li>Familiar with Maya and Blender</li>
+        <!-- Later GitHub Projects here -->
       </ul>
     </section>
 
     <section id="Connect">
       <h2>Connect</h2>
-      <a href="https://github.com/mariafarr002" target="_blank" rel="noreferrer"
-        >GitHub Profile</a>
-      <a
-        href="https://www.linkedin.com/in/maria-arredondo-645a49405"
-        target="_blank"
-        rel="noreferrer"
-        >LinkedIn Profile</a>
+      <div class="links">
+        <a href="https://github.com/mariafarr002" class="github"
+          >GitHub Profile
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/maria-arredondo-645a49405"
+          class="linkedin"
+          >LinkedIn Profile</a
+        >
+      </div>
     </section>
+    <script src="js/index.js"></script>
   </body>
 </html>
