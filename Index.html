@@ -160,12 +160,16 @@
       </div>
     </section>
 
+    <section id="messages">
+      <h2>Messages</h2>
+      <ul></ul>
+    </section>
+
     <section id="Form">
-       <div class="message-area">
-       <h2>Leave a Message!</h2>
+      <h2>Leave a Message!</h2>
       <form name="leave_message">
         <label for="usersName">Name:</label>
-        <input type="text" id="usersName" required />
+        <input type="text" id="usersName" name="usersName" required />
         <br />
         <label for="usersEmail">Email:</label>
         <input type="email" id="usersEmail" name="usersEmail" required />
@@ -174,14 +178,7 @@
         <textarea id="usersMessage" name="usersMessage" required></textarea>
         <br />
         <button type="submit">Submit</button>
-      </form> 
-      </div>
-      <img src="images/email-icon.png" alt="a vector image of an envelope" class="email-icon" />
-    </section>
-
-    <section id="messages">
-      <h2>Messages</h2>
-      <ul></ul>
+      </form>
     </section>
 
     <script src="js/index.js"></script>

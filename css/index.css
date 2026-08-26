@@ -355,23 +355,18 @@ h3 {
   #Form {
   background: linear-gradient(to right,#26367E 50%, white 50%);
     color: white;
+    flex: 1;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     padding: 30px;
   }
   .email-icon {
     width: 400px;
     height: 400px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin: 10%;
     overflow: hidden;
-  }
-
-  .message-area {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
   }
 
   #Form h2 {
