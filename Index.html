@@ -30,6 +30,7 @@
       <a href="#Skills">Skills</a>
       <a href="#Projects">Projects</a>
       <a href="#Connect">Connect</a>
+      <a href="#Form">Leave a Message</a>
     </nav>
 
     <header>
@@ -38,14 +39,13 @@
     </header>
 
     <section id="About">
-      
       <img
         src="images/profile-pic.jpeg"
-        alt="a side profile of a woman in a scarf outside in the snow" class="profile-pic"
+        alt="a side profile of a woman in a scarf outside in the snow"
+        class="profile-pic"
       />
- 
+
       <div class="about-column">
-       
         <h2>About</h2>
         <h3>Hiya!</h3>
         <p>
@@ -59,7 +59,7 @@
           cinema and animation.
         </p>
       </div>
-      <img src="images/art1.png" alt="chibi cartoon of a girl" class="art1"/>
+      <img src="images/art1.png" alt="chibi cartoon of a girl" class="art1" />
     </section>
 
     <div class="quote-container">
@@ -135,7 +135,7 @@
     <section id="Skills">
       <h2>Skills</h2>
       <!-- List of skills added with DOM -->
-       <ul></ul>
+      <ul></ul>
     </section>
 
     <section id="Projects">
@@ -144,7 +144,7 @@
         <!-- Later GitHub Projects here -->
       </ul>
     </section>
- 
+
     <section id="Connect">
       <h2>Connect</h2>
       <div class="links">
@@ -159,6 +159,31 @@
         >
       </div>
     </section>
+
+    <section id="Form">
+       <div class="message-area">
+       <h2>Leave a Message!</h2>
+      <form name="leave_message">
+        <label for="usersName">Name:</label>
+        <input type="text" id="usersName" required />
+        <br />
+        <label for="usersEmail">Email:</label>
+        <input type="email" id="usersEmail" name="usersEmail" required />
+        <br />
+        <label for="usersMessage">Message:</label>
+        <textarea id="usersMessage" name="usersMessage" required></textarea>
+        <br />
+        <button type="submit">Submit</button>
+      </form> 
+      </div>
+      <img src="images/email-icon.png" alt="a vector image of an envelope" class="email-icon" />
+    </section>
+
+    <section id="messages">
+      <h2>Messages</h2>
+      <ul></ul>
+    </section>
+
     <script src="js/index.js"></script>
   </body>
 </html>
