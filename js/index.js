@@ -54,7 +54,8 @@ messageForm.addEventListener("submit", function (event) {
   const messageSection = document.querySelector("#messages")
   const messageList = messageSection.querySelector("ul")
   const newMessage = document.createElement("li")
-  newMessage.innerHTML = `<a href= "mailto:${uEmail}">${uName}</a><span> ${uMessage}</span>`
+
+  newMessage.innerHTML = `<a href="mailto:${uEmail}">${uName}</a> <span><br/>${uMessage}</span>`
 
   const removeButton = document.createElement("button")
   removeButton.innerText = "remove"
@@ -64,7 +65,6 @@ messageForm.addEventListener("submit", function (event) {
     const entry = removeButton.parentNode
     entry.remove()
   })
-
 
   newMessage.appendChild(removeButton)
   messageList.appendChild(newMessage)
