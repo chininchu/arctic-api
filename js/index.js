@@ -71,3 +71,33 @@ messageForm.addEventListener("submit", function (event) {
 
   messageForm.reset()
 })
+
+/*  =====================
+  Fetch Request to Github
+  ====================== */
+fetch("https://api.github.com/users/mariafarr002/repos")
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("Request failed" + response.status)
+    }
+    return response.json()
+  })
+
+  .then(data => {
+    const repoData = data
+    console.log("repositories:", repoData)
+
+    const projectSection = document.querySelector("#Projects")
+    const projectList = projectSection.querySelector("ul")
+
+    for (let i = 0; i < repoData.length; i++) {
+      const project = document.createElement("li")
+      project.innerText = repoData[i].name
+      projectList.appendChild(project)
+    }
+    
+  })
+
+  .catch(error => {
+    console.error("Something went wrong...:", error)
+  })
