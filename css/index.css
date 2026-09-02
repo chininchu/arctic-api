@@ -5,7 +5,7 @@ body {
   background-color: #00b7cf;
   color: #1d2a62;
   font-family: "Roboto-Serif", serif;
-  margin: 0 auto;
+  margin: 0;
   line-height: 1.5;
 }
 
@@ -16,12 +16,12 @@ p {
 section {
   padding: 10px;
 }
+
 /* =====================
   Navigation Menu
   ====================== */
 nav {
   background-color: #ededed;
-  border-radius: 100px;
   font-family: "Roboto", serif;
   box-shadow: 0 8px 20px rgba(12, 123, 163, 0.459);
 
@@ -29,24 +29,22 @@ nav {
   letter-spacing: 2px;
   text-transform: uppercase;
 
-  top: 5px;
+  top: 0;
   position: sticky;
   z-index: 100;
 
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-
-  width: auto;
-  max-width: 100%;
-  margin: 5px auto;
-  overflow: hidden;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
 }
 
 nav a {
   color: #00b7cf;
   text-decoration: none;
-  padding: 20px;
+  margin: 0 30px;
+  padding: 10px 0;
 }
 
 nav a:hover {
@@ -54,17 +52,24 @@ nav a:hover {
   font-size: 11px;
 }
 
+.nav-message {
+  border-radius: 50px;
+  border: #00b7cf 5px solid;
+  margin-left: auto;
+  padding: 10px 0;
+}
+
 /* =====================
   Title/Header
   ====================== */
 header {
   background-color: #00b7cf;
-  overflow: hidden;
   color: #ededed;
-  text-align: center;
-  margin: 0 auto;
-  padding: 200px;
-  line-height: 0.8;
+  text-align: right;
+  padding: 180px;
+  background: url("../images/art2.png") no-repeat left / cover;
+
+  background-size: 650px;
 }
 
 header h1 {
@@ -72,7 +77,7 @@ header h1 {
   font-weight: 400;
   font-style: normal;
   font-size: 90px;
-  margin-top: 0;
+  line-height: 0.8;
 }
 
 header p {
@@ -83,20 +88,19 @@ header p {
 
 header em {
   color: #fed85d;
-  font-size: larger;
+  font-size: 120px;
 }
 
 /* =====================
   Headings
   ====================== */
 h2 {
-  width: 40%;
-  margin-right: auto;
+  text-align: center;
+  color: #1d2a62;
   font-size: 40px;
   font-family: "Roboto", sans;
   font-weight: bold;
   text-transform: uppercase;
-  text-align: center;
 }
 
 h3 {
@@ -107,14 +111,16 @@ h3 {
   About
   ====================== */
 #About {
+  background: url("../images/art1.png") no-repeat top right / cover;
+  background-size: 350px;
+
   background-color: #ededed;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
-  margin: 0 auto;
-  padding: 90px;
+  padding: 60px;
   margin-bottom: -20px;
-  overflow: hidden;
 }
 
 #About h2 {
@@ -132,16 +138,12 @@ h3 {
 }
 
 .profile-pic {
-  width: 600px;
-  height: 600px;
-  /*object-fit: cover;
-  padding: 10px 0;*/
+  object-fit: cover;
   flex: 1;
   max-width: 600px;
   display: flex;
   flex-direction: column;
 }
-
 
 #About p {
   font-size: 20px;
@@ -178,19 +180,10 @@ h3 {
   align-items: center;
   font-family: "Roboto-Serif", sans;
   font-style: italic;
-  margin: 655px 0 0 655px;
-}
 
-.art1 {
-  width: 300px;
-  height: 300px;
-  max-width: 300px;
-  padding: 0;
-  position: relative;
-  left: -100px;
-  flex: 1;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 /*  =====================
@@ -200,10 +193,6 @@ h3 {
   margin-top: -33px;
   background: linear-gradient(#ededed 40%, #00b7cf 60%);
   padding: 40px 0;
-}
-
-#Experience h2 {
-  margin-bottom: 30px;
 }
 
 #Experience ul {
@@ -268,20 +257,16 @@ h3 {
 
 #Skills {
   background-color: #ededed;
-  padding: 40px 0;
+  padding: 40px;
+}
 
-}
-#Skills h2 {
-  margin: 0 30%;
-  margin-bottom: 30px;
-}
 #Skills ul {
   border-radius: 5px;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
   gap: 20px;
-  overflow: hidden;
 }
 
 #Skills li {
@@ -296,6 +281,22 @@ h3 {
 
 #Projects {
   background-color: #ededed;
+  padding: 40px;
+}
+
+#Projects ul {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+}
+
+#Projects li {
+  border-radius: 10px;
+  background-color: #00b7cf;
+  list-style: none;
+  padding: 100px;
 }
 
 /*  =====================
@@ -308,13 +309,11 @@ h3 {
 
 #Connect h2 {
   color: #ededed;
-  margin: 0 30%;
 }
 
 #Connect a {
   text-decoration: none;
 }
-
 
 .links {
   display: flex;
@@ -325,10 +324,10 @@ h3 {
 }
 
 .github {
-   display: inline-block;
+  display: inline-block;
   width: 50px;
   height: 50px;
-  background-image: url('../images/github.png');
+  background-image: url("../images/github.png");
   background-size: contain;
   background-repeat: no repeat;
 
@@ -338,10 +337,10 @@ h3 {
 }
 
 .linkedin {
-   display: inline-block;
+  display: inline-block;
   width: 50px;
   height: 50px;
-  background-image: url('../images/linkedin.png');
+  background-image: url("../images/linkedin.png");
   background-size: contain;
   background-repeat: no repeat;
   text-indent: 100%;
@@ -352,92 +351,106 @@ h3 {
 /*  =====================
   Leave A Message form
   ====================== */
-  #Leave-a-Message {
-  background: linear-gradient(to right,#26367E 50%, white 50%);
-    color: white;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 30px;
-  }
-  .email-icon {
-    width: 400px;
-    height: 400px;
-    display: flex;
-    flex-direction: row;
-    margin: 10%;
-    overflow: hidden;
-  }
+#Leave-a-Message {
+  background: linear-gradient(to right, #26367e 50%, white 50%);
+  color: white;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  margin-left: auto;
+}
+.email-icon {
+  width: 400px;
+  height: 400px;
+  display: flex;
+  flex-direction: row;
+  margin: 10%;
+  overflow: hidden;
+}
 
-  #Leave-a-Message h2 {
-    font-style: italic;
-    margin: 0 14%;
-    padding: 50px 20px;
+#Leave-a-Message h2 {
+  font-style: italic;
+  padding: 20px 20px;
+  margin-right: auto;
+}
 
-  }
+#Leave-a-Message label {
+  display: inline-block;
+}
 
-  #Leave-a-Message label {
-    display: inline-block;
-  }
-  
-  #Leave-a-Message input {
-    margin: 10px 18px;
-    padding: 10px 60px;
-  }
+#Leave-a-Message input {
+  margin: 10px 18px;
+  padding: 10px 60px;
+}
 
-  #Leave-a-Message textarea {
-    margin: 10px 0;
-    padding: 60px;
-  }
+#Leave-a-Message textarea {
+  margin: 10px 0;
+  padding: 60px;
+}
 
-  #Leave-a-Message button {
-    color: #1d2a62;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-radius: 15px;
-    padding: 10px 100px;
-    margin: 6% 17%;
-  }
+#Leave-a-Message button {
+  color: #1d2a62;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 15px;
+  padding: 10px 100px;
+  margin: 6% 17%;
+}
 
-  #Leave-a-Message button:hover {
+#Leave-a-Message button:hover {
   color: #00b7cf;
-  }
+}
 
 /*  =====================
   Message Section
   ====================== */
-  #messages li {
-    background-color: white;
-    list-style: none;
-    text-align: center;
-    padding: 15px;
-    margin: 0 30px;
-  }
-  /*#messages ul:hover {
+#messages li {
+  background-color: white;
+  list-style: none;
+  text-align: center;
+  padding: 15px;
+  margin: 0 30px;
+}
+/*#messages ul:hover {
     color:#1d2a62;
   }*/
 
-  #messages a {
-    color:#6daf5f;
-    text-decoration: none;
-    padding: 0 30px;
-  }
+#messages a {
+  color: #6daf5f;
+  text-decoration: none;
+  padding: 0 30px;
+}
 
-  #messages button {
-    color: #1d2a62;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-radius: 15px;
-    padding: 10px;
-    margin: 0 30px;
-  }
+#messages button {
+  color: #1d2a62;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 0 30px;
+}
 
-  #messages button:hover {
+#messages button:hover {
   color: #00b7cf;
-  }
+}
 
-  /* ----- Mobile Phones (up to 600px) ----- */
-@media (max-width: 600px) {
+/* ----- Mobile Phones (up to 400px) ----- */
+@media all and (max-width: 400px) {
+  .nav-message {
+    justify-content: flex-start;
+    margin-right: auto;
+    margin: 10px 0;
+  }
+}
+
+/* ----- Mobile Phones (up to 600px) ----- */
+@media all and (max-width: 600px) {
+  .profile-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
   #Leave-a-Message {
     padding: 20px;
