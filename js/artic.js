@@ -33,7 +33,6 @@ async function fetchArtwork() {
 
       if (item.image_id) {
         const imageElement = document.createElement("img");
-        imageElement.referrerPolicy = "no-referrer";
         imageElement.src = `${urlBase}/${item.image_id}/full/843,/0/default.jpg`;
         imageElement.alt = item.title;
         artworkSection.appendChild(imageElement);
