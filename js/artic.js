@@ -35,6 +35,10 @@ async function fetchArtwork() {
         const imageElement = document.createElement("img");
         imageElement.src = `${urlBase}/${item.image_id}/full/843,/0/default.jpg`;
         imageElement.alt = item.title;
+        // API's image CDN sometimes blocks requests; hide broken image icon instead
+        imageElement.addEventListener("error", () => {
+          imageElement.remove();
+        });
         artworkSection.appendChild(imageElement);
       }
 
