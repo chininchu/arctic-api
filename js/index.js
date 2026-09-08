@@ -1,105 +1,112 @@
-/*  =====================
-  Footer
-  ====================== */
-const createFooter = document.createElement("footer");
-createFooter.style.backgroundColor = "white";
-createFooter.style.marginBottom = "auto";
-createFooter.style.textAlign = "center";
-document.body.appendChild(createFooter);
+const apiUrl = "https://api.artic.edu/api/v1/artworks/search";
+const fields = "id,title,artist_display,date_display,image_id,thumbnail";
+const gallery = document.querySelector("#gallery");
+const collectionStatus = document.querySelector("#collection-status");
+const resultCount = document.querySelector("#result-count");
+const searchForm = document.querySelector(".search-form");
+const searchInput = document.querySelector("#art-search");
+const loadMoreButton = document.querySelector("#load-more");
+const artworkTemplate = document.querySelector("#artwork-template");
 
-const today = new Date();
-const thisYear = today.getFullYear();
+let page = 1;
+let currentSearch = "";
+let iiifUrl = "https://www.artic.edu/iiif/2";
+let hasMore = true;
 
-const footer = document.querySelector("footer");
-
-const copyright = document.createElement("p");
-copyright.textContent = `\u00A9 Maria Fernanda Arredondo Garcia ${thisYear}`;
-footer.appendChild(copyright);
-
-/*  =====================
-  List of Skills
-  ====================== */
-const skills = [
-  "Krita",
-  "Adobe Illustrator",
-  "Adobe Photoshop",
-  "Adobe Indesign",
-  "Maya",
-  "JavaScript",
-  "CSS",
-  "HTML",
-];
-const skillsSection = document.querySelector("#Skills");
-
-const skillsList = skillsSection.querySelector("ul");
-
-for (const skillName of skills) {
-  const skill = document.createElement("li");
-  skill.innerText = skillName;
-  skillsList.appendChild(skill);
+function imageUrl(imageId) {
+  return `${iiifUrl}/${imageId}/full/600,/0/default.jpg`;
 }
 
-/*  =====================
-  Message Form Submit
-  ====================== */
-const messageForm = document.querySelector('form[name="leave_message"]');
+function artworkUrl(id) {
+  return `https://www.artic.edu/artworks/${id}`;
+}
 
-messageForm.addEventListener("submit", function (event) {
-  event.preventDefault();
-  const uName = event.target.usersName.value;
-  const uEmail = event.target.usersEmail.value;
-  const uMessage = event.target.usersMessage.value;
-  console.log(uName, uEmail, uMessage);
+function renderArtworks(artworks) {
+  const fragment = document.createDocumentFragment();
 
-  const messageSection = document.querySelector("#messages");
-  const messageList = messageSection.querySelector("ul");
-  const newMessage = document.createElement("li");
+  artworks
+    .filter(({ image_id: imageId }) => imageId)
+    .forEach((artwork) => {
+      const card = artworkTemplate.content.cloneNode(true);
+      const link = card.querySelector("a");
+      const image = card.querySelector("img");
+      const title = card.querySelector("h3");
+      const details = card.querySelector("p");
 
-  const emailLink = document.createElement("a");
-  emailLink.href = `mailto:${encodeURIComponent(uEmail)}`;
-  emailLink.textContent = uName;
+      link.href = artworkUrl(artwork.id);
+      image.alt = artwork.title;
+      image.addEventListener("error", () => {
+        if (artwork.thumbnail?.lqip && image.src !== artwork.thumbnail.lqip) {
+          image.src = artwork.thumbnail.lqip;
+          image.classList.add("image-preview");
+        }
+      });
+      image.src = imageUrl(artwork.image_id);
+      title.textContent = artwork.title;
+      details.textContent =
+        [artwork.artist_display, artwork.date_display]
+          .filter(Boolean)
+          .join(" / ") || "Artist and date unavailable";
+      fragment.appendChild(card);
+    });
 
-  const messageText = document.createElement("span");
-  messageText.append(document.createElement("br"), uMessage);
+  gallery.appendChild(fragment);
+}
 
-  newMessage.append(emailLink, messageText);
+async function getArtworks({ reset = false } = {}) {
+  if (reset) {
+    page = 1;
+    gallery.replaceChildren();
+  }
 
-  const removeButton = document.createElement("button");
-  removeButton.innerText = "remove";
-  removeButton.type = "button";
+  collectionStatus.textContent = "";
+  gallery.setAttribute("aria-busy", "true");
+  loadMoreButton.disabled = true;
+  loadMoreButton.hidden = false;
 
-  removeButton.addEventListener("click", function () {
-    const entry = removeButton.parentNode;
-    entry.remove();
+  const params = new URLSearchParams({
+    limit: "16",
+    page: String(page),
+    fields,
+    "query[term][is_public_domain]": "true",
   });
 
-  newMessage.appendChild(removeButton);
-  messageList.appendChild(newMessage);
+  if (currentSearch) params.set("q", currentSearch);
 
-  messageForm.reset();
+  try {
+    const response = await fetch(`${apiUrl}?${params}`);
+    if (!response.ok) throw new Error("The collection could not be loaded.");
+
+    const payload = await response.json();
+    iiifUrl = payload.config?.iiif_url || iiifUrl;
+    const artworks = payload.data || [];
+    renderArtworks(artworks);
+
+    hasMore = Boolean(payload.pagination?.next_url) && artworks.length > 0;
+    resultCount.textContent = currentSearch
+      ? `Results for ${currentSearch}`
+      : "Public-domain works";
+    collectionStatus.textContent = artworks.length
+      ? ""
+      : "No images matched that search.";
+    loadMoreButton.hidden = !hasMore;
+    page += 1;
+  } catch (error) {
+    collectionStatus.textContent = error.message;
+    resultCount.textContent = "Collection unavailable";
+    loadMoreButton.hidden = true;
+  } finally {
+    gallery.setAttribute("aria-busy", "false");
+    loadMoreButton.disabled = false;
+  }
+}
+
+searchForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  currentSearch = searchInput.value.trim();
+  getArtworks({ reset: true });
 });
 
-/*  =====================
-  Fetch Request to Github
-  ====================== */
-try {
-  const response = await fetch(
-    "https://api.github.com/users/mariafarr002/repos",
-  );
-  if (!response.ok) {
-    throw new Error("Request failed" + response.status);
-  }
-  const repoData = await response.json();
-  console.log("repositories:", repoData);
+loadMoreButton.addEventListener("click", () => getArtworks());
 
-  const projectSection = document.querySelector("#Projects");
-  const projectList = projectSection.querySelector("ul");
-
-  for (const repository of repoData) {
-    const project = document.createElement("li");
-    project.innerText = repository.name;
-    projectList.appendChild(project);
-  }
-} catch (error) {
-  console.error("Something went wrong...:", error);
-}
+await getArtworks();
