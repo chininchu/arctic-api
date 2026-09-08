@@ -1,20 +1,20 @@
 /*  =====================
   Footer
   ====================== */
-const createFooter = document.createElement("footer")
-createFooter.style.backgroundColor = "white"
-createFooter.style.marginBottom = "auto"
-createFooter.style.textAlign = "center"
-document.body.appendChild(createFooter)
+const createFooter = document.createElement("footer");
+createFooter.style.backgroundColor = "white";
+createFooter.style.marginBottom = "auto";
+createFooter.style.textAlign = "center";
+document.body.appendChild(createFooter);
 
-const today = new Date()
-const thisYear = today.getFullYear()
+const today = new Date();
+const thisYear = today.getFullYear();
 
-const footer = document.querySelector("footer")
+const footer = document.querySelector("footer");
 
-const copyright = document.createElement("p")
-copyright.textContent = `\u00A9 Maria Fernanda Arredondo Garcia ${thisYear}`
-footer.appendChild(copyright)
+const copyright = document.createElement("p");
+copyright.textContent = `\u00A9 Maria Fernanda Arredondo Garcia ${thisYear}`;
+footer.appendChild(copyright);
 
 /*  =====================
   List of Skills
@@ -28,76 +28,78 @@ const skills = [
   "JavaScript",
   "CSS",
   "HTML",
-]
-const skillsSection = document.querySelector("#Skills")
+];
+const skillsSection = document.querySelector("#Skills");
 
-const skillsList = skillsSection.querySelector("ul")
+const skillsList = skillsSection.querySelector("ul");
 
-for (let i = 0; i < skills.length; i++) {
-  const skill = document.createElement("li")
-  skill.innerText = skills[i]
-  skillsList.appendChild(skill)
+for (const skillName of skills) {
+  const skill = document.createElement("li");
+  skill.innerText = skillName;
+  skillsList.appendChild(skill);
 }
 
 /*  =====================
   Message Form Submit
   ====================== */
-const messageForm = document.querySelector('form[name="leave_message"]')
+const messageForm = document.querySelector('form[name="leave_message"]');
 
 messageForm.addEventListener("submit", function (event) {
-  event.preventDefault()
-  const uName = event.target.usersName.value
-  const uEmail = event.target.usersEmail.value
-  const uMessage = event.target.usersMessage.value
-  console.log(uName, uEmail, uMessage)
+  event.preventDefault();
+  const uName = event.target.usersName.value;
+  const uEmail = event.target.usersEmail.value;
+  const uMessage = event.target.usersMessage.value;
+  console.log(uName, uEmail, uMessage);
 
-  const messageSection = document.querySelector("#messages")
-  const messageList = messageSection.querySelector("ul")
-  const newMessage = document.createElement("li")
+  const messageSection = document.querySelector("#messages");
+  const messageList = messageSection.querySelector("ul");
+  const newMessage = document.createElement("li");
 
-  newMessage.innerHTML = `<a href="mailto:${uEmail}">${uName}</a> <span><br/>${uMessage}</span>`
+  const emailLink = document.createElement("a");
+  emailLink.href = `mailto:${encodeURIComponent(uEmail)}`;
+  emailLink.textContent = uName;
 
-  const removeButton = document.createElement("button")
-  removeButton.innerText = "remove"
-  removeButton.type = "button"
+  const messageText = document.createElement("span");
+  messageText.append(document.createElement("br"), uMessage);
+
+  newMessage.append(emailLink, messageText);
+
+  const removeButton = document.createElement("button");
+  removeButton.innerText = "remove";
+  removeButton.type = "button";
 
   removeButton.addEventListener("click", function () {
-    const entry = removeButton.parentNode
-    entry.remove()
-  })
+    const entry = removeButton.parentNode;
+    entry.remove();
+  });
 
-  newMessage.appendChild(removeButton)
-  messageList.appendChild(newMessage)
+  newMessage.appendChild(removeButton);
+  messageList.appendChild(newMessage);
 
-  messageForm.reset()
-})
+  messageForm.reset();
+});
 
 /*  =====================
   Fetch Request to Github
   ====================== */
-fetch("https://api.github.com/users/mariafarr002/repos")
-  .then(response => {
-    if (!response.ok) {
-      throw new Error("Request failed" + response.status)
-    }
-    return response.json()
-  })
+try {
+  const response = await fetch(
+    "https://api.github.com/users/mariafarr002/repos",
+  );
+  if (!response.ok) {
+    throw new Error("Request failed" + response.status);
+  }
+  const repoData = await response.json();
+  console.log("repositories:", repoData);
 
-  .then(data => {
-    const repoData = data
-    console.log("repositories:", repoData)
+  const projectSection = document.querySelector("#Projects");
+  const projectList = projectSection.querySelector("ul");
 
-    const projectSection = document.querySelector("#Projects")
-    const projectList = projectSection.querySelector("ul")
-
-    for (let i = 0; i < repoData.length; i++) {
-      const project = document.createElement("li")
-      project.innerText = repoData[i].name
-      projectList.appendChild(project)
-    }
-    
-  })
-
-  .catch(error => {
-    console.error("Something went wrong...:", error)
-  })
+  for (const repository of repoData) {
+    const project = document.createElement("li");
+    project.innerText = repository.name;
+    projectList.appendChild(project);
+  }
+} catch (error) {
+  console.error("Something went wrong...:", error);
+}
